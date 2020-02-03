@@ -9,9 +9,13 @@ function save_mess(){
     mysqli_query($db,$query);
 }
 
-function get_all_books(){
+function get_all_row($table, $by, $order, $filter = false){
     global $db;
-    $query = "SELECT id, id_genre, id_author, title, descr, price, coustr, img FROM books ORDER BY id DESC";
+    if($filter){
+        $query = "SELECT * FROM $table WHERE id_genre=$filter ORDER BY $by $order";
+    } else {
+        $query = "SELECT * FROM $table ORDER BY $by $order";
+    }
     $res = mysqli_query($db, $query);
     $posts = mysqli_fetch_all($res,1);
     return $posts;

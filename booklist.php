@@ -2,10 +2,15 @@
 require_once('db.php');
 require_once('funcs.php');
 require_once('classes/book.php');
-$arrBooks = get_all_books();
-foreach($arrBooks as $book):
-    endforeach;
 require_once 'profLine.php';
+if(!empty($_GET["genre"]) || $_GET["genre"] !== 0){
+    $arrBooks = get_all_row('books', 'id', 'DESC', $_GET["genre"]);
+} else {
+    $arrBooks = get_all_row('books', 'id', 'DESC');
+}
+$arrGenres = get_all_row('genre', 'id', 'ASC');
+$arrAuthors = get_all_row('author', 'surname', 'ASC');
+
 ?>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,8 +19,31 @@ require_once 'profLine.php';
 </head>
 <body>
     <div class="container">
+        <div class="filter__block">
+            <ul class="filter__list">
+                <a href="?genre=0"><li class="list_item">Все жанры</li></a>
+                <?php foreach($arrGenres as $genre): ?>
+                <a href="?genre=<?=$genre['id']?>"><li class="list_item"><?=$genre['title']?></li></a>
+                <?php endforeach; ?>
+                <li class="list_item">
+                    <div class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            Выберите Автора
+                        </a>
+                        <ul class="dropdown-menu">
+                            <?php foreach($arrAuthors as $author): ?>
+                            <li><a href="?author=<?=$author['id']?>"><?=$author['surname']?> <?=$author['name']?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <div class="row">
-            <?php foreach($arrBooks as $book):
+            <?php if(count($arrBooks) === 0 || count($arrBooks) < 0){ ?>
+                <h3 style="display: block; margin: 0 auto;">Извините, но в данном жанре пока нет товара или жанр не существует!</h3>
+            <?php }
+            foreach($arrBooks as $book):
             $bookItem = new Book($book['title'], $book['id_author'], $book['$id_genre'], $book['descr'], $book['price'], $book['coust'], $book['img']);
             ?>
             <div class="col-2">

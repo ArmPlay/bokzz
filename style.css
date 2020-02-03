@@ -4,6 +4,54 @@ body {
   background-color: #eee;
 }
 
+.filter__block{
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.filter__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgb(0,89,156);
+  background: linear-gradient(128deg, rgba(0,89,156,1) 0%, rgba(9,120,191,1) 35%, rgba(0,116,255,1) 100%);
+  border-radius: 25px;
+  padding: 10px;
+}
+
+.filter__list .list_item {
+  text-transform: uppercase;
+  font-size: 25px;
+  padding: 5px;
+  color: #fff;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+.filter__list .list_item :last-child {
+  padding-left: 40px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+.filter__list .list_item .dropdown-toggle {
+  color: #fff;
+}
+.filter__list .list_item .dropdown-menu {
+  padding: 0;
+}
+.filter__list .list_item .dropdown-menu li{
+  padding-left: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+  border: none;
+}
+.filter__list .list_item .dropdown-menu li a {
+  padding: 5px 5px;
+  border: none;
+}
+
+.filter__list a:hover {
+  text-decoration: none;
+}
+
 .boxBook {
   margin-top: 20px;
   padding: 10px;

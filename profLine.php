@@ -27,7 +27,7 @@ session_start();
                     <a class="nav-link" href=".."><b>Главная</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="notelist.php"><b>Книги</b></a>
+                    <a class="nav-link " href="booklist.php"><b>Книги</b></a>
                 </li>
                 <li class="nav-item" <?php if(empty($_SESSION)):  echo 'style="display: none"'; endif;?>>
                     <a class="nav-link " href="addnote.php"><b>Добавить книгу</b></a>
