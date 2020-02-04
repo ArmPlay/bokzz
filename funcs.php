@@ -21,6 +21,26 @@ function get_all_row($table, $by, $order, $filter = false){
     return $posts;
 }
 
+function addParametr($params, $value){
+    if(!empty($_SERVER['QUERY_STRING'])){
+        parse_str($_SERVER['QUERY_STRING'], $parameters);
+        if(count($parameters) > 0){
+            foreach($parameters as $gets => $val){
+                if($params == $gets){
+                    $val = $value;
+                } else {
+                    $parameters[$params] = $value; 
+                }
+            }
+            return "?" . http_build_query($parameters);
+        } else {
+            return "?$params=$value";
+        }
+    } else {
+        return "?$params=$value";
+    }
+}
+
 function autorization($login, $pass){
     global $db;
     $login = strtolower($login);

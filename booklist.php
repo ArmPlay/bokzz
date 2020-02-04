@@ -20,10 +20,11 @@ $arrAuthors = get_all_row('author', 'surname', 'ASC');
 <body>
     <div class="container">
         <div class="filter__block">
+            <?=$_SERVER['QUERY_STRING'];?>
             <ul class="filter__list">
-                <a href="?genre=0"><li class="list_item">Все жанры</li></a>
+                <a href="<?=addParametr('genre', 0);?>"><li class="list_item">Все жанры</li></a>
                 <?php foreach($arrGenres as $genre): ?>
-                <a href="?genre=<?=$genre['id']?>"><li class="list_item"><?=$genre['title']?></li></a>
+                <a href="<?=addParametr('genre', $genre['id']);?>"><li class="list_item"><?=$genre['title']?></li></a>
                 <?php endforeach; ?>
                 <li class="list_item">
                     <div class="dropdown">
@@ -32,7 +33,7 @@ $arrAuthors = get_all_row('author', 'surname', 'ASC');
                         </a>
                         <ul class="dropdown-menu">
                             <?php foreach($arrAuthors as $author): ?>
-                            <li><a href="?author=<?=$author['id']?>"><?=$author['surname']?> <?=$author['name']?></a></li>
+                            <li><a href="<?=addParametr('author', $author['id']);?>"><?=$author['surname']?> <?=$author['name'];?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
