@@ -4,6 +4,37 @@ body {
   background-color: #eee;
 }
 
+.book {
+  margin-top: 60px;
+}
+
+.book__info {
+  font-size: 20px;
+}
+
+.book__info .book__info-header {
+  font-size: 25px;
+}
+
+.book__info .book__info-author {
+  margin-top: 10px;
+}
+
+.book__info .book__info-btn {
+  margin-top: 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+  width: 150px;
+}
+
+.book__info .book__info-descr {
+  margin-top: 10px;
+}
+
+.book__info span {
+  font-weight: 700;
+}
+
 .filter__block{
   margin: 0 auto;
   margin-top: 20px;

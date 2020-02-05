@@ -21,18 +21,20 @@ class Book {
         $this->img = $img;
     }
 
-    protected function getAuthor(){
+    public function getAuthor(){
         global $db;
-        $quote = "SELECT `surname`, `name` FROM `author` WHERE `id`=$this->author";
-        $result = mysqli_query($db, $query);
-        return $result;
+        $query = "SELECT `surname`, `name` FROM `author` WHERE `id`=$this->author";
+        $resultQuery = mysqli_query($db, $query);
+        $result = mysqli_fetch_assoc($resultQuery);
+        return $result['name'] . ' ' . $result['surname'];
     }
 
-    protected function getGenre(){
+    public function getGenre(){
         global $db;
-        $quote = "SELECT `title` FROM `genre` WHERE `id`=$this->genre";
-        $result = mysqli_query($db, $query);
-        return $result;
+        $query = "SELECT `title` FROM `genre` WHERE `id`=$this->genre";
+        $resultQuery = mysqli_query($db, $query);
+        $result = mysqli_fetch_assoc($resultQuery);
+        return $result['title'];
     }
 
     public function getTitle(){

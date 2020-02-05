@@ -3,11 +3,7 @@ require_once('db.php');
 require_once('funcs.php');
 require_once('classes/book.php');
 require_once 'profLine.php';
-if(!empty($_GET["genre"]) || $_GET["genre"] !== 0){
-    $arrBooks = get_all_row('books', 'id', 'DESC', $_GET["genre"]);
-} else {
-    $arrBooks = get_all_row('books', 'id', 'DESC');
-}
+$arrBooks = showBooks();
 $arrGenres = get_all_row('genre', 'id', 'ASC');
 $arrAuthors = get_all_row('author', 'surname', 'ASC');
 
@@ -20,7 +16,6 @@ $arrAuthors = get_all_row('author', 'surname', 'ASC');
 <body>
     <div class="container">
         <div class="filter__block">
-            <?=$_SERVER['QUERY_STRING'];?>
             <ul class="filter__list">
                 <a href="<?=addParametr('genre', 0);?>"><li class="list_item">Все жанры</li></a>
                 <?php foreach($arrGenres as $genre): ?>
@@ -29,9 +24,18 @@ $arrAuthors = get_all_row('author', 'surname', 'ASC');
                 <li class="list_item">
                     <div class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                            Выберите Автора
+                            <?php
+                            if(empty($_GET['author']) || $_GET['author'] === 0){
+                                echo "Все авторы";
+                            } else {
+                                foreach($arrAuthors as $author):
+                                    if($_GET['author'] === $author['id']){
+                                        echo $author['surname'] . ' ' . $author['name'];
+                                    }
+                                endforeach;
+                            } ?>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" style="width: 130%; left: -45px;">
                             <?php foreach($arrAuthors as $author): ?>
                             <li><a href="<?=addParametr('author', $author['id']);?>"><?=$author['surname']?> <?=$author['name'];?></a></li>
                             <?php endforeach; ?>
@@ -41,14 +45,15 @@ $arrAuthors = get_all_row('author', 'surname', 'ASC');
             </ul>
         </div>
         <div class="row">
-            <?php if(count($arrBooks) === 0 || count($arrBooks) < 0){ ?>
+            <?php if(count($arrBooks) === 0 || count($arrBooks) < 0 || $arrBooks === false){ ?>
                 <h3 style="display: block; margin: 0 auto;">Извините, но в данном жанре пока нет товара или жанр не существует!</h3>
             <?php }
-            foreach($arrBooks as $book):
-            $bookItem = new Book($book['title'], $book['id_author'], $book['$id_genre'], $book['descr'], $book['price'], $book['coust'], $book['img']);
+            if($arrBooks){
+                foreach($arrBooks as $book):
+                    $bookItem = new Book($book['title'], $book['id_author'], $book['id_genre'], $book['descr'], $book['price'], $book['coust'], $book['img']);        
             ?>
             <div class="col-2">
-                <a href="" class="book__link">
+                <a href="book.php?id=<?=$book['id']?>" class="book__link">
                     <div class="boxBook">
                         <img src="img/booksTitle/<?=$bookItem->getImg();?>" alt="<?=$bookItem->getTitle();?>" class="boxBook__img">
                         <div class="boxBook__title"><?=$bookItem->getTitle();?></div>
@@ -59,7 +64,8 @@ $arrAuthors = get_all_row('author', 'surname', 'ASC');
                     </div>
                 </a>
             </div>
-            <?php endforeach; ?>
+            <?php endforeach; 
+            }?>
         </div>
     </div>
 <script src="main.js" type="text/javascript"></script>
