@@ -22,7 +22,39 @@ $book = showBookCard();
                     <div class="book__info-genre"><span>Жанр: </span><?=$book->getGenre();?></div>
                     <div class="book__info-price"><span>Цена: </span>$<?=$book->getPrice();?></div>
                     <div class="book__info-coustr"><span>Количество страниц: </span><?=$book->getCoustr();?></div>
-                    <button class="book__info-btn btn btn-primary">Купить</button>
+                    <button class="book__info-btn btn btn-primary" tyoe="button" data-toggle="modal" data-target=".bd-example-modal-lg">Купить</button>
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content book__modal">
+                                <form method="POST" action="booklist.php?order=1">
+                                    <input name="book" type="hidden" value="<?=$book->getTitle();?>">
+                                    <div class="form-group has-feedback">
+                                        <label for="validationCustom01">ФИО</label>
+                                        <input type="text" name="NameUser" class="form-control" id="validationCustom01" placeholder="Максов Хостинг Максович" required>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="validationCustom02">Адрес</label>
+                                        <input type="text" name="AddressUser" class="form-control" id="validationCustom02" placeholder="ул. Гагарина, д. 5" required>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label for="FormControlSelect1">Количество экземпляров</label>
+                                        <select class="form-control" name="CountBook" id="FormControlSelect1" required>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="FormControlTextarea1">Примечание к заказу(по желанию)</label>
+                                        <textarea class="form-control" name="NoteOrder" id="FormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="text-transform: uppercase;">Заказать</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="book__info-descr"><?=$book->getDescr();?></div>
                 </div>
             </div>

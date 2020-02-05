@@ -6,6 +6,15 @@ require_once 'profLine.php';
 $arrBooks = showBooks();
 $arrGenres = get_all_row('genre', 'id', 'ASC');
 $arrAuthors = get_all_row('author', 'surname', 'ASC');
+if($_GET['order'] == 1){
+    if ($_POST) {
+        // echo '<pre>';
+        // echo htmlspecialchars(print_r($_POST, true));
+        // echo '</pre>';
+        sendOrder($_POST['book'], $_POST['NameUser'], $_POST['AddressUser'], $_POST['CountBook'], $_POST['NoteOrder']);
+    }
+}
+
 
 ?>
 <head>

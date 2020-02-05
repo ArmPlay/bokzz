@@ -35,6 +35,10 @@ body {
   font-weight: 700;
 }
 
+.book__modal {
+  padding: 30px;
+}
+
 .filter__block{
   margin: 0 auto;
   margin-top: 20px;

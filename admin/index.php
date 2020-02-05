@@ -7,11 +7,7 @@ require_once 'profLine.php';?>
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <h3>Админ Панель</h3>
-            <a href="addbook.php" class="btn btn-primary">Добавить книгу</a>
-            <a href="editbook.php" class="btn btn-primary">Изменить книгу</a>
-            <a href="delbook.php" class="btn btn-primary">Удалить книгу</a>
-            <a href="orderlist.php" class="btn btn-primary">Посмотреть заказы</a>
+            <h1 style="margin-top: 50px;">Админ Панель</h1>
         </div>
     </div>
 </div>

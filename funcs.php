@@ -2,12 +2,14 @@
 require_once 'db.php';
 require_once 'classes/book.php';
 
-function save_mess(){
-    global $db;
-    $username = mysqli_real_escape_string($db,$_GET['username']);
-    $note = mysqli_real_escape_string($db,$_GET['note']);
-    $query = "INSERT INTO notes (name, text) VALUES ('$username','$note')";
-    mysqli_query($db,$query);
+function save_mess($str){
+    $ordFile = fopen('orders.txt', 'a+');
+    $writeFile = fwrite($ordFile, $str);
+    if(!$writeFile){
+        return false;
+    }
+    fclose($ordFile);
+    return true;
 }
 
 function get_all_row($table, $by, $order, $where = false, $filter = false){
@@ -25,6 +27,11 @@ function get_all_row($table, $by, $order, $where = false, $filter = false){
     } else {
         return false;
     }
+}
+
+function sendOrder($book, $fullName, $address, $countbook, $noteOrder = false){
+    $str = "|^$book|$fullName|$address|$countbook|$noteOrder\n";
+    save_mess($str);
 }
 
 function addParametr($params, $value){
