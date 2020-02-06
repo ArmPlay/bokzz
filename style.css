@@ -93,6 +93,33 @@ body {
   color: black;
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
+.boxBookAdm {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.boxBookAdm__title {
+  color: black;
+  font-size: 20px;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+.boxBookAdm__btn {
+  margin-right: 10px;
+}
+.boxBookAdm:hover {
+  border-radius: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.boxBookAdm:hover > .boxBookAdm__bottom {
+  display: flex;
+}
+.boxBookAdm__bottom {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+}
 .boxBook:hover {
   border-radius: 5px;
   border: 1px solid white;

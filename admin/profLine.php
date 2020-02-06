@@ -28,15 +28,6 @@ session_start();
                     <a class="nav-link " href="booklist.php" style="color: white;"><b>Книги</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="addnote.php" style="color: white;"><b>Добавить книгу</b></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="editnote.php" style="color: white;"><b>Изменить книгу</b></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="delnote.php" style="color: white;"><b>Удалить книгу</b></a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link " href="orderlist.php" style="color: white;"><b>Заказы</b></a>
                 </li>
             </ul>
