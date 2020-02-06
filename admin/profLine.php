@@ -1,8 +1,3 @@
-<?php //if(isset($_SESSION))? echo '' : echo 'disabled';
-//require_once "funcs.php";
-session_start();
-
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,7 +10,7 @@ session_start();
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-lg" style="border-bottom: 1px solid #47c5ff;">
-        <a class="navbar-brand" href="..">AlexBookAdmin</a>
+        <a class="navbar-brand" href="/admin">AlexBookAdmin</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -1,0 +1,4 @@
+AuthName "Dokaji chto ty admin"
+AuthType Basic
+Require valid-user
+AuthUserFile  "C:/OSPanel/domains/AlexBook/admin/.htpasswd"

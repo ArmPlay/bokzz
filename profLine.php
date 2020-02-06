@@ -1,9 +1,5 @@
-<?php //if(isset($_SESSION))? echo '' : echo 'disabled';
+<?php 
 require_once "funcs.php";
-session_start();
-
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,44 +20,14 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href=".."><b>Главная</b></a>
+                    <a class="nav-link" style="color: white;" href=".."><b>Главная</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="booklist.php"><b>Книги</b></a>
+                    <a class="nav-link" style="color: white;" href="booklist.php"><b>Книги</b></a>
                 </li>
-                <li class="nav-item" <?php if(empty($_SESSION)):  echo 'style="display: none"'; endif;?>>
-                    <a class="nav-link " href="addnote.php"><b>Добавить книгу</b></a>
-                </li>
-                <li class="nav-item" <?php if(empty($_SESSION)):  echo 'style="display: none"'; endif;?>>
-                    <a class="nav-link" href="#"><b>Админ панель</b></a>
-                </li>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                -->
+                
             </ul>
-            <?php
-            if(!empty($_SESSION)): ?>
-                <div class="btn-group">
-                    <a class="btn btn-outline-light my-2 my-sm-0 dropdown-toggle dropdown-toggle-split" href="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['login']; ?> </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Профиль</a>
-                        <a class="dropdown-item" href="#">Мои записи</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Админ-панель</a>
-                    </div>
-                </div>
-            <?php else:?>
-                <a href="login.php"><button class="btn btn-outline-light my-2 my-sm-0">Login</button></a>
-            <?php endif; ?>
+            <a class="btn btn-outline-light my-2 my-sm-0 " href="/admin"  aria-haspopup="true" aria-expanded="false">Админка</a>
         </div>
     </nav>
     <p style="margin-bottom:55px;"></p>
